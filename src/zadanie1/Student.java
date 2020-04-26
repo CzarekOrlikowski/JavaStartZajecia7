@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public class Student extends Person {
     private String course;
+    private Person person;
 
-    public Student(String firstName, String lastName, Address address, String course) {
-        super(firstName, lastName, address);
-        this.course = course;
-  }
+//    public Student(String firstName, String lastName, Address address, String course) {
+//        super(firstName, lastName, address);
+//        this.course = course;
+//    }
 
     public Student(String course, Person person) {
         this.course = course;
+        this.person = person;
     }
 
 
@@ -22,12 +24,12 @@ public class Student extends Person {
                 + Group.NAME_FRENCH + ", "
                 + Group.NAME_GERMAN + "): ");
         String course = scan.nextLine();
-        return new Student(course, newPersonBuilder());
+        return new Student(course, Person.newPersonBuilder());
 
     }
 
     public String toString() {
-        return "Students{" +
+        return "Student{" +
                 "course='" + course + '\'' +
                 '}';
     }
