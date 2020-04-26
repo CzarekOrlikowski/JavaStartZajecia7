@@ -3,34 +3,38 @@ package zadanie1;
 import java.util.Scanner;
 
 public class Student extends Person {
-    private String course;
-    private Person person;
+    private String indexNumber;
 
-//    public Student(String firstName, String lastName, Address address, String course) {
-//        super(firstName, lastName, address);
-//        this.course = course;
-//    }
-
-    public Student(String course, Person person) {
-        this.course = course;
-        this.person = person;
+    public Student(String firstName, String lastName, Address address, String indexNumber) {
+        super(firstName, lastName, address);
+        this.indexNumber = indexNumber;
     }
 
+    public String getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setIndexNumber(String indexNumber) {
+        this.indexNumber = indexNumber;
+    }
 
     public static Student newStudentBuilder() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Wybierz dostępny kurs ("
-                + Group.NAME_ENGLISH + ", "
-                + Group.NAME_FRENCH + ", "
-                + Group.NAME_GERMAN + "): ");
-        String course = scan.nextLine();
-        return new Student(course, Person.newPersonBuilder());
-
+        System.out.print("Numer indeksu: ");
+        String indexNumber = scan.nextLine();
+        System.out.print("Imię: ");
+        String firstName = scan.nextLine();
+        System.out.print("Nazwisko: ");
+        String lastName = scan.nextLine();
+        return new Student(firstName, lastName, Address.newAddressBuilder(), indexNumber);
     }
 
-    public String toString() {
+      public String toString() {
         return "Student{" +
-                "course='" + course + '\'' +
+                "index='" + getIndexNumber() + '\'' +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", address=" + getAddress() +
                 '}';
     }
 }

@@ -1,24 +1,40 @@
 package zadanie1;
 
+import java.util.Scanner;
+
 public class Trainer extends Person {
-    String subject;
+    String education;
 
-    public Trainer(String firstName, String lastName, Address address, String subject) {
+    public Trainer(String firstName, String lastName, Address address, String education) {
         super(firstName, lastName, address);
-        this.subject = subject;
+        this.education = education;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getEducation() {
+        return education;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public static Trainer newTrainerBuilder() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Wykształcenie: ");
+        String education = scan.nextLine();
+        System.out.print("Imię: ");
+        String firstName = scan.nextLine();
+        System.out.print("Nazwisko: ");
+        String lastName = scan.nextLine();
+        return new Trainer(firstName, lastName, Address.newAddressBuilder(), education);
     }
 
     public String toString() {
-        return "Trainers{" +
-                "subject='" + subject + '\'' +
+        return "Trainer{" +
+                "subject='" + getEducation() + '\'' +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", address=" + getAddress() +
                 '}';
     }
 }

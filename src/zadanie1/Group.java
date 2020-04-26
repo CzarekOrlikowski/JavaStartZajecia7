@@ -1,6 +1,8 @@
 package zadanie1;
 
+import javax.swing.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 
 public class Group {
@@ -43,6 +45,29 @@ public class Group {
         this.student = student;
     }
 
+
+    public static Group newGroupBuilder() {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Kreator grup zajęciowych");
+        System.out.print("Rodzaj grupy ("
+                + Group.NAME_ENGLISH + ", "
+                + Group.NAME_FRENCH + ", "
+                + Group.NAME_GERMAN + "): ");
+        String groupName = scan.nextLine();
+
+        System.out.println("Podaj dane trenera");
+        Trainer trainer = Trainer.newTrainerBuilder();
+
+        System.out.print("Podaj ilość uczestników: ");
+        int studentsNumber = scan.nextInt();
+        Student[] list = new Student[studentsNumber];
+        for (int i = 0; i <= list.length - 1; i++) {
+            list[i] = Student.newStudentBuilder();
+        }
+        return new Group(groupName, trainer, list);
+    }
+
     public String toString() {
         return "Group{" +
                 "groupName='" + groupName + '\'' +
@@ -51,3 +76,5 @@ public class Group {
                 '}';
     }
 }
+
+
